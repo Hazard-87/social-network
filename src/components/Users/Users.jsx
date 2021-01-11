@@ -3,19 +3,14 @@ import classes from './Users.module.css';
 import {NavLink} from "react-router-dom";
 import userPhoto from '../../assets/images/user.png';
 import Preloader from "../common/Preloader/Preloader";
-// import Paginator from "../common/Paginator/Paginator";
-import Button from "@material-ui/core/Button";
-import {PaginationOutlined} from "../common/Paginator/Paginator";
+import Paginator from "../common/Paginator/Paginator";
 
 let Users = (props) => {
     let p = props.currentPage + 1
 
     return <div className={classes.body}>
-        {/*<Paginator totalPageCount={props.totalPageCount} pageSize={props.pageSize}*/}
-        {/*           currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>*/}
-        <div className={classes.paginator}>
-            <PaginationOutlined totalPageCount={props.totalPageCount} onPageChanged={props.onPageChanged}/>
-        </div>
+        <Paginator totalPageCount={props.totalPageCount} pageSize={props.pageSize}
+                   currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>
         {props.isFetching && <div className={classes.preloader}><Preloader/></div>}
         {props.users.map(user =>
             <div key={user.id}>
@@ -40,9 +35,9 @@ let Users = (props) => {
             </div>
         )
         }
-        <Button variant="outlined" color="primary" className={classes.more} onClick={(e) => {
+        <button className={classes.more} onClick={(e) => {
             props.onMorePage(p)
-        }}>Show more</Button>
+        }}>Show more</button>
     </div>
 }
 

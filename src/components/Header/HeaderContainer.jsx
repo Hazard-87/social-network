@@ -2,7 +2,6 @@ import React from 'react';
 import Header from "./Header";
 import {connect} from "react-redux";
 import {logout, setAuthUserData} from "../../redux/auth-reducer";
-import {setEditMode} from "../../redux/profileReducer";
 
 class HeaderContainer extends React.Component {
     render() {
@@ -20,4 +19,4 @@ let mapStateToProps = (state) => ({
     profile: state.profilePage.profile
 })
 
-export default connect(mapStateToProps, {setAuthUserData, logout, setEditMode})(HeaderContainer);
+export default connect(mapStateToProps, {setAuthUserData, logout})(HeaderContainer);

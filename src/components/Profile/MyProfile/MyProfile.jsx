@@ -1,27 +1,13 @@
-import React, {useState} from 'react';
-import styles from './MyProfile.module.css';
+import React from 'react';
+import classes from './MyProfile.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from '../../../assets/images/user.png';
 import ProfileDataForm from "./ProfileDataForm";
-import {makeStyles} from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import {Grid} from "@material-ui/core";
-
+import {setEditMode} from "../../../redux/profileReducer";
 
 const MyProfile = (props) => {
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            '& > *': {
-                margin: theme.spacing(1),
-            },
-        },
-        input: {
-            display: 'none',
-        },
-    }));
-    const classes = useStyles()
+
 
     if (!props.profile.photos) {
         return <Preloader/>
@@ -38,29 +24,29 @@ const MyProfile = (props) => {
         })
     }
 
+    const onEditMode = () => {
+    props.setEditMode(true)
+    }
+
     return (
-        <Grid direction="row" container justify="flex-start">
-            <Grid sm={4} className={styles.avatar}>
+        <div className={classes.content}>
+            <div className={classes.avatar}>
                 <img src={!props.profile.photos.large ? userPhoto : props.profile.photos.large}/>
                 {props.isOwner &&
                 <div className={classes.root}>
-                    <input accept="image/*" className={classes.input} id="icon-button-file"
+                    <input accept="image/*" className={classes.input}
                            type="file" onChange={onSelectedPhoto}/>
-                    <label htmlFor="icon-button-file">
-                        <IconButton color="primary" aria-label="upload picture" component="span">
-                            <PhotoCamera/>
-                        </IconButton>
-                    </label>
                 </div>}
-            </Grid>
-            <Grid sm={7}>
+            </div>
+            <div>
+                {props.isOwner && <div><button onClick={onEditMode}>edit profile</button></div>}
                 <div><b>{props.profile.fullName}</b></div>
                 <ProfileStatusWithHooks {...props} status={props.status} updateStatus={props.updateStatus}/>
                 {props.editMode
                     ? <ProfileDataForm initialValues={props.profile} onSubmit={onSubmit} {...props}/>
                     : <ProfileData {...props}/>}
-            </Grid>
-        </Grid>
+            </div>
+        </div>
     )
 }
 
@@ -82,7 +68,7 @@ const ProfileData = (props) => {
 }
 
 export const Contact = ({contactTitle, contactValue}) => {
-    return <div className={styles.contact}><b>{contactTitle}</b>: <a href={contactValue}>{contactValue}</a></div>
+    return <div className={classes.contact}><b>{contactTitle}</b>: <a href={contactValue}>{contactValue}</a></div>
 }
 
 export default MyProfile;

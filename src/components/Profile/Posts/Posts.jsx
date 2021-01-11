@@ -1,8 +1,5 @@
 import React from 'react';
 import classes from './Posts.module.css';
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Icon from "@material-ui/core/Icon";
 
 
 const Posts = (props) => {
@@ -24,12 +21,11 @@ const Posts = (props) => {
               {props.likesCount}
           </div>
           <div>
-              <TextField id="standard-basic" label="Comment" />
+              <textarea />
           </div>
               <div>
-                  <Button onClick={newComment} variant="contained" className={classes.button}
-                      endIcon={<Icon>send</Icon>}>send
-                  </Button>
+                  <button onClick={newComment}>send
+                  </button>
           </div>
       </div>
   )

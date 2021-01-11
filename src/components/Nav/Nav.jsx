@@ -2,14 +2,13 @@ import React from 'react';
 import classes from './Nav.module.css';
 import {NavLink} from "react-router-dom";
 import Friends from "./Friends/Friends";
-import classNames from 'classnames';
+// import classNames from 'classnames';
 
-class Nav extends React.Component {
-    friendsElements = () => {
-        this.props.friends.map(f => <Friends name={f.name} ava={f.ava}/>)
+const Nav = (props) => {
+    const friendsElements = () => {
+        props.friends.map((friend, index) => <Friends key={index} name={friend.name} ava={friend.ava}/>)
     }
 
-    render() {
         return (
             <nav className={classes.nav}>
                 <div className={classes.item}><NavLink to={`/profile`}
@@ -30,10 +29,10 @@ class Nav extends React.Component {
                 <div className={classes.item}><NavLink to='/friends'
                                                        activeClassName={classes.active}>Friends</NavLink>
                 </div>
-                {this.friendsElements}
+                {friendsElements}
             </nav>
         )
     }
-}
+
 
 export default Nav;

@@ -4,13 +4,10 @@ import Posts from "../Posts/Posts";
 import * as form from "redux-form";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControl";
-import {makeStyles} from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 
 
 const MyPosts = React.memo(props => {
-    let postElements = [...props.posts].reverse().map(post => <Posts message={post.post} likesCount={post.likesCount}/>)
+    let postElements = [...props.posts].reverse().map((post, index) => <Posts key={index} message={post.post} likesCount={post.likesCount}/>)
 
     let addNewPost = (values) => {
         props.addPost(values.newPostBody)
@@ -30,35 +27,15 @@ const MyPosts = React.memo(props => {
 })
 
 let MyPostsForm = (props) => {
-    const useStyles = makeStyles((theme) => ({
-        field: {
-            '& .MuiTextField-root': {
-                margin: theme.spacing(1),
-                width: '98ch',
-            },
-        },
-        root: {
-            '& > *': {
-                margin: theme.spacing(1),
-                width: '150px',
-                float: 'right',
-                marginRight: '13px',
-                marginBottom: '10px'
-            }
-        }
-    }));
-    const classes = useStyles()
-
     return (
         <form onSubmit={props.handleSubmit}>
-            <div className={classes.field}>
-                <Field component={Textarea} name={'newPostBody'} label={'New Post'} />
+            <div className={styles.field}>
+                <Field component={Textarea} name={'newPostBody'}/>
             </div>
-            <div className={classes.root}>
-                <Button onClick={props.handleSubmit} variant="contained" color="primary"
-                         endIcon={<Icon>send</Icon>}>
+            <div>
+                <button onClick={props.handleSubmit}>
                     Send
-                </Button>
+                </button>
             </div>
         </form>
     )

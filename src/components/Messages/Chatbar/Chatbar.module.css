@@ -16,7 +16,9 @@
 /*    top: 500px;*/
 /*}*/
 
-
+.chatWrap {
+    display: flex;
+}
 
 
 
