@@ -1,0 +1,22 @@
+.chatbar {
+    min-height: 500px;
+    border-left: 1px solid rgba(182, 181, 181, 0.5);
+}
+
+.sms {
+    width: 96%;
+    resize: none;
+    margin-left: 10px;
+}
+.root {
+    width: 200px;
+}
+/*.field {*/
+/*    position: fixed;*/
+/*    top: 500px;*/
+/*}*/
+
+
+
+
+

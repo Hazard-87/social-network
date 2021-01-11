@@ -1,0 +1,30 @@
+.header {
+    grid-area: h;
+    background-color: #191971;
+}
+
+.header img {
+    height: 60px;
+    width: 80px;
+}
+
+.login {
+    cursor: default;
+    color: #ffffff;
+    float: right;
+}
+
+.login a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.log {
+    padding: 17px;
+}
+
+.login img {
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}

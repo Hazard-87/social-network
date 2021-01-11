@@ -1,0 +1,36 @@
+.message {
+    width: 97%;
+    display: inline-block;
+    /*flex-flow: wrap;*/
+    margin: 10px;
+    padding: 10px 0;
+    color: #000000;
+    background-color: #bdbdbd;
+
+}
+.message:first-child {
+    margin-top: 0;
+}
+.img img{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    cursor: pointer;
+
+}
+
+.text {
+    max-width: 80%;
+    display: block;
+    float: right;
+    padding: 10px;
+    border: 1px solid #7f7e7e;
+    border-radius: 10px;
+    font-size: 12px;
+    margin: 0 10px;
+}
+.img {
+    display: block;
+    float: right;
+}

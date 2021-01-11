@@ -1,0 +1,39 @@
+.dialogs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dialog {
+    margin: 10px 10px 10px 0;
+}
+
+.dialog a {
+    display: table;
+    width: 170px;
+    background-color: #bdbdbd;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    color: #666666;
+    text-decoration: none;
+}
+
+.dialog:first-child {
+    margin-top: 0;
+}
+
+.dialog a:hover {
+    box-shadow: 0px 0px 3px 0px black;
+}
+
+.dialog a.active {
+    opacity: 1;
+    color: #000;
+    background-color: #8d8d8d;
+}
+
+.img img{
+    float: left;
+    height: 40px;
+    width: 40px;
+}

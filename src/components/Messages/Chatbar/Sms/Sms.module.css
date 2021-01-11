@@ -1,0 +1,17 @@
+
+.chatSend {
+    background-color: #00aa66;
+    border: none;
+    width: 80px;
+    height: 20px;
+    color: white;
+    float: right;
+    margin-right: 13px;
+}
+
+.sms {
+    position: fixed;
+    resize: none;
+    margin-left: 10px;
+
+}

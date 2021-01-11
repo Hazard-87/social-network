@@ -1,0 +1,50 @@
+h1 {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 2;
+}
+p {
+  font-size: 14px;
+  line-height: 5px;
+}
+
+.item {
+  color: blue;
+  margin: 20px;
+
+}
+
+.item img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.like img {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.like {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.newComment {
+  resize: none;
+  margin-left: 10px;
+}
+.send {
+  background-color: #00aa66;
+  border: none;
+  width: 80px;
+  height: 20px;
+  color: white;
+  margin-left: 10px;
+}
+.post {
+  margin: 10px auto;
+  border-top: 1px solid #dcdcdc;
+}

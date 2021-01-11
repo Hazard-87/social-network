@@ -1,0 +1,6 @@
+.messages {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    min-height: 500px;
+}
+
