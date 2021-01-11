@@ -1,17 +1,23 @@
 import React from "react";
 import classes from './Users.module.css';
 import {NavLink} from "react-router-dom";
-import userPhoto from '../../assets/images/user.png';
+// import userPhoto from '../../assets/images/user.png';
 import Preloader from "../common/Preloader/Preloader";
 import Paginator from "../common/Paginator/Paginator";
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+
+
+
 
 let Users = (props) => {
     let p = props.currentPage + 1
 
-    return <div className={classes.body}>
+    return <div>
         <Paginator totalPageCount={props.totalPageCount} pageSize={props.pageSize}
                    currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>
         {props.isFetching && <div className={classes.preloader}><Preloader/></div>}
+        <div className={classes.container}>
         {props.users.map(user =>
             <div key={user.id}>
             <span className={props.isFetching ? classes.hide : classes.user}>
@@ -26,7 +32,8 @@ let Users = (props) => {
                         </div>
                         <NavLink to={'/profile/' + user.id}>
                         <div className={classes.img}>
-                            <img src={user.photos.large != null ? user.photos.large : userPhoto}/>
+                            {user.photos.large != null ?
+                            <img src={user.photos.large} /> :<Avatar shape="square" size={128} icon={<UserOutlined />} />}
                         </div>
                         <div>{user.name}</div>
                         <div className={classes.status}>{user.status}</div>
@@ -35,6 +42,7 @@ let Users = (props) => {
             </div>
         )
         }
+        </div>
         <button className={classes.more} onClick={(e) => {
             props.onMorePage(p)
         }}>Show more</button>

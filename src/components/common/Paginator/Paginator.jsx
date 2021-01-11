@@ -91,8 +91,8 @@ const Paginator = (props) => {
         <button onClick={(e)=>{setPortionNumber(portionNumber - 1)}}>PREV</button>}
         {pages
             .filter(p=> p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-            .map(p => {
-                return <span className={props.currentPage === p ? styles.selectedPage : styles.pageNumber}
+            .map((p, index) => {
+                return <span key={index} className={props.currentPage === p ? styles.selectedPage : styles.pageNumber}
                              onClick={(e) => {
                                  props.onPageChanged(p)
                              }}>{p}</span>

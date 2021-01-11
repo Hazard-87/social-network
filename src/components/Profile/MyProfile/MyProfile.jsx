@@ -24,9 +24,7 @@ const MyProfile = (props) => {
         })
     }
 
-    const onEditMode = () => {
-    props.setEditMode(true)
-    }
+
 
     return (
         <div className={classes.content}>
@@ -39,7 +37,6 @@ const MyProfile = (props) => {
                 </div>}
             </div>
             <div>
-                {props.isOwner && <div><button onClick={onEditMode}>edit profile</button></div>}
                 <div><b>{props.profile.fullName}</b></div>
                 <ProfileStatusWithHooks {...props} status={props.status} updateStatus={props.updateStatus}/>
                 {props.editMode

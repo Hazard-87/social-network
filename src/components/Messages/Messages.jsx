@@ -4,7 +4,8 @@ import Dialogs from "./Dialogs/Dialogs";
 import ChatbarContainer from "./Chatbar/ChatbarContainer";
 
 const Messages = (props) => {
-    let dialogsElements = props.dialogs.map(dialog => <Dialogs
+    let dialogsElements = props.dialogs.map((dialog, index) => <Dialogs
+        key={index}
         name={dialog.name}
         id={dialog.id}
         ava={dialog.ava}/>)

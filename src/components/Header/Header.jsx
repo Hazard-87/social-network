@@ -116,18 +116,14 @@ const Header = (props) => {
     if (!props.profile.photos) {
         props.profile.photos = ''
     }
-
     return (
-        <header className={classes.header}>
-            <img src='http://pngimg.com/uploads/vkontakte/vkontakte_PNG31.png'/>
-            <div className={classes.login}>
+            <div>
                 {props.isAuth
                     ? <div><span>{props.login}</span>
                         <button onClick={props.logout}>log out</button>
                     </div>
-                    : <NavLink to={'/login'}>login</NavLink>}
+                    : <NavLink to={'/login'}>Sign In</NavLink>}
             </div>
-        </header>
     )
 }
 

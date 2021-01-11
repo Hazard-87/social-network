@@ -1,12 +1,12 @@
-.header {
-    grid-area: h;
-    background-color: #191971;
-}
+/*.header {*/
+/*    grid-area: h;*/
+/*    background-color: #191971;*/
+/*}*/
 
-.header img {
-    height: 60px;
-    width: 80px;
-}
+/*.header img {*/
+/*    height: 60px;*/
+/*    width: 80px;*/
+/*}*/
 
 .login {
     cursor: default;

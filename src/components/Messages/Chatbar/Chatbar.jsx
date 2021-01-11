@@ -5,9 +5,10 @@ import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControl";
 import {maxLengthCreator, required} from "../../../utils/validation/validators";
 
+const ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
 
 const Chatbar = (props) => {
-    let messageElements = props.messagesPage.messages.map(m => <Chat message={m.message} avatar={m.ava} id={m.id}/>)
+    let messageElements = props.messagesPage.messages.map((m, index) => <Chat key={index} message={m.message} avatar={m.ava} id={m.id}/>)
 
     let addNewMessage = (values) => {
         props.addMessage(values.newMessageBody)
@@ -16,8 +17,11 @@ const Chatbar = (props) => {
 
     return (
        <div>
+           <div className={classes.container}>
+               <div className={classes.message}>
                 {messageElements}
-
+               </div>
+           </div>
                 <AddMessageReduxForm onSubmit={addNewMessage}/>
        </div>
     )

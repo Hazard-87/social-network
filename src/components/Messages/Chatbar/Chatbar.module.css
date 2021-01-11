@@ -19,6 +19,16 @@
 .chatWrap {
     display: flex;
 }
-
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: end;
+    height: 450px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+}
+.message {
+    width: 100%;
+}
 
 
