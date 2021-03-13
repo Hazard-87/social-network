@@ -74,6 +74,7 @@ export const requestUsers = (currentPage, pageSize) => {
         dispatch(toggleIsFetching(true))
         let data = await usersAPI.getUsers(currentPage, pageSize)
         dispatch(toggleIsFetching(false))
+        console.log(data.items)
         dispatch(setUsers(data.items))
         dispatch(setTotalPageCount(data.totalCount))
     }
