@@ -5,8 +5,10 @@ import {Textarea} from "../../common/FormsControls/FormsControl";
 import classes from './MyProfile.module.css'
 
 
-const ProfileDataForm = (props) => {
+import { Button } from 'antd';
 
+
+const ProfileDataForm = (props) => {
 
     return <form onSubmit={props.handleSubmit}>
         <div><b> Full name: <Field className={classes.input} component={Input} name={'fullName'} type='input'/></b></div>
@@ -25,7 +27,7 @@ const ProfileDataForm = (props) => {
         {props.error && <div className={classes.formSummaryError}>
             {props.error}
         </div>}
-        <button onClick={props.handleSubmit} className={classes.button}>save</button>
+        <Button onClick={props.handleSubmit}>SAVE</Button>
     </form>
 }
 

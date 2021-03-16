@@ -112,7 +112,7 @@ class App extends React.Component {
                         </Menu>
                     </Sider>
                     <Layout className="site-layout">
-                        <Header className="site-layout-background" style={{padding: 0}}/>
+                        {/*<Header className="site-layout-background" style={{padding: 0}}/>*/}
                         <Content style={{margin: '0 16px'}}>
                             <Breadcrumb style={{margin: '16px 0'}}>
                                 {/*<Breadcrumb.Item>User</Breadcrumb.Item>*/}

@@ -77,6 +77,8 @@ import { required } from '../../utils/validation/validators';
 import { login } from '../../redux/auth-reducer';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import {Button} from "antd";
+
 
 const handleFocus = (event) => event.target.select();
 
@@ -117,7 +119,7 @@ const LoginForm = (props) => {
                                         component={Input} validate={[required]}/>}
 
             <div>
-                <button className={styles.login}>Login</button>
+                <Button onClick={props.handleSubmit}>Login</Button>
             </div>
             {props.error && <div className={classes.formSummaryError}>{props.error}</div>}
         </form>

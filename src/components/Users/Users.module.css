@@ -1,5 +1,5 @@
 .container {
-    background-color: #8996fd;
+    /*background-color: #8996fd;*/
     max-width: 95%;
     justify-content: space-between;
     display: flex;
@@ -19,30 +19,30 @@
     box-shadow: none;
 }
 
-.user {
-    display: table;
-    width: 200px;
-    background-color: #fdfdfd;
-    text-align: center;
-    height: 270px;
-    float: left;
-    margin: 12px;
-}
+/*.user {*/
+/*    display: table;*/
+/*    width: 200px;*/
+/*    background-color: #fdfdfd;*/
+/*    text-align: center;*/
+/*    height: 270px;*/
+/*    float: left;*/
+/*    margin: 12px;*/
+/*}*/
 
-.user a {
-    color: #666;
-    text-decoration: none;
-}
+/*.user a {*/
+/*    color: #666;*/
+/*    text-decoration: none;*/
+/*}*/
 
-.user:hover {
-    box-shadow: 0 0 3px 0 #686868;
-}
+/*.user:hover {*/
+/*    box-shadow: 0 0 3px 0 #686868;*/
+/*}*/
 
-.img img {
-    width: 198px;
-    height: 198px;
-    border: 1px solid #c7c7c7;
-}
+/*.img img {*/
+/*    width: 198px;*/
+/*    height: 198px;*/
+/*    border: 1px solid #c7c7c7;*/
+/*}*/
 
 .status {
     font-size: 12px;

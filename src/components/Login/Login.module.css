@@ -1,6 +1,9 @@
 .wrap {
-    width: 200px;
-    background-color: #d9d9d9;
+    width: 300px;
+    background-color: #000118;
     margin-left: 290px;
     padding: 20px 50px;
+}
+h2{
+    color: #fff;
 }

@@ -4,6 +4,7 @@ import Posts from "../Posts/Posts";
 import * as form from "redux-form";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControl";
+import {Button} from "antd";
 
 
 const MyPosts = React.memo(props => {
@@ -33,9 +34,9 @@ let MyPostsForm = (props) => {
                 <Field component={Textarea} name={'newPostBody'}/>
             </div>
             <div>
-                <button onClick={props.handleSubmit}>
-                    Send
-                </button>
+                <Button onClick={props.handleSubmit}>
+                    SEND
+                </Button>
             </div>
         </form>
     )

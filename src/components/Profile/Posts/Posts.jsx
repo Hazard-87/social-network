@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Posts.module.css';
+import {Button} from "antd";
 
 
 const Posts = (props) => {
@@ -24,8 +25,8 @@ const Posts = (props) => {
               <textarea />
           </div>
               <div>
-                  <button onClick={newComment}>send
-                  </button>
+                  <Button onClick={newComment}>COMMENT
+                  </Button>
           </div>
       </div>
   )
