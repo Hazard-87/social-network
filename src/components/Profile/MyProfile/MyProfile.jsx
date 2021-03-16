@@ -5,6 +5,7 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from '../../../assets/images/user.png';
 import ProfileDataForm from "./ProfileDataForm";
 import {setEditMode} from "../../../redux/profileReducer";
+import UploadFile from "../../common/upload/Upload";
 
 const MyProfile = (props) => {
 
@@ -31,10 +32,13 @@ const MyProfile = (props) => {
             <div className={classes.avatar}>
                 <img src={!props.profile.photos.large ? userPhoto : props.profile.photos.large}/>
                 {props.isOwner &&
-                <div className={classes.root}>
-                    <input accept="image/*" className={classes.input}
-                           type="file" onChange={onSelectedPhoto}/>
-                </div>}
+
+                    <UploadFile onSelectedPhoto={onSelectedPhoto}/>
+                // <div className={classes.root}>
+                //     <input accept="image/*" className={classes.input}
+                //            type="file" onChange={onSelectedPhoto}/>
+                // </div>
+                }
             </div>
             <div>
                 <div><b>{props.profile.fullName}</b></div>

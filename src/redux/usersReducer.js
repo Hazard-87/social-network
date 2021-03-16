@@ -5,12 +5,13 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 const SET_MORE_USERS = 'SET_MORE_USERS'
 const SET_СURRENT_PAGE = 'SET_СURRENT_PAGE'
+const SET_PAGE_SIZE = 'SET_PAGE_SIZE'
 const SET_TOTAL_PAGE_COUNT = 'SET_TOTAL_PAGE_COUNT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 let initialState = {
     users: [],
-    pageSize: 10,
+    pageSize: 100,
     totalPageCount: 0,
     currentPage: 1,
     isFetching: true,
@@ -50,6 +51,9 @@ const usersReducer = (state = initialState, action) => {
         case SET_СURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
         }
+        case SET_PAGE_SIZE: {
+            return {...state, pageSize: action.pageSize}
+        }
         case SET_TOTAL_PAGE_COUNT: {
             return {...state, totalPageCount: action.totalPageCount}
         }
@@ -74,7 +78,6 @@ export const requestUsers = (currentPage, pageSize) => {
         dispatch(toggleIsFetching(true))
         let data = await usersAPI.getUsers(currentPage, pageSize)
         dispatch(toggleIsFetching(false))
-        console.log(data.items)
         dispatch(setUsers(data.items))
         dispatch(setTotalPageCount(data.totalCount))
     }
@@ -104,11 +107,11 @@ export const follow = (userId) => {
 export const unfollow = (userId) => {
     return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))
-       let data = await usersAPI.getUnfollow(userId)
-            if (data.resultCode == 0) {
-                dispatch(unfollowAccept(userId))
-            }
-            dispatch(toggleFollowingProgress(false, userId))
+        let data = await usersAPI.getUnfollow(userId)
+        if (data.resultCode == 0) {
+            dispatch(unfollowAccept(userId))
+        }
+        dispatch(toggleFollowingProgress(false, userId))
     }
 }
 
@@ -117,6 +120,7 @@ export const unfollowAccept = (userId) => ({type: 'UNFOLLOW', userId})
 export const setUsers = (users) => ({type: 'SET_USERS', users})
 export const setMoreUsers = (users) => ({type: 'SET_MORE_USERS', users})
 export const setCurrentPage = (currentPage) => ({type: 'SET_СURRENT_PAGE', currentPage})
+export const setPageSize = (pageSize) => ({type: 'SET_PAGE_SIZE', pageSize})
 export const setTotalPageCount = (totalPageCount) => ({type: 'SET_TOTAL_PAGE_COUNT', totalPageCount})
 export const toggleIsFetching = (isFetching) => ({type: 'TOGGLE_IS_FETCHING', isFetching})
 export const toggleFollowingProgress = (isFetching, userId) => ({

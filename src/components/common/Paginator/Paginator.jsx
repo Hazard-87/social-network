@@ -1,107 +1,29 @@
-// import React, {useState} from "react";
-// import styles from './Paginator.module.css';
-// import Button from "@material-ui/core/Button";
-// import { makeStyles } from '@material-ui/core/styles';
-// import Pagination from '@material-ui/lab/Pagination';
-//
-//
-//
-// export const Paginator = (props) => {
-//
-// let portionSize = 10
-//     let pagesCount = Math.ceil(props.totalPageCount / props.pageSize)
-//     let pages = []
-//     for (let i = 1; i <= pagesCount; i++) {
-//         if (i <= pagesCount) {
-//             pages.push(i)
-//         }
-//     }
-//
-//     let portionCount = Math.ceil(pagesCount/portionSize)
-//     let [portionNumber, setPortionNumber] = useState(1)
-//     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
-//     let rightPortionPageNumber = portionNumber * portionSize
-//
-//     return <div className={styles.paginator}>
-//         {portionNumber > 1 &&
-//         <Button onClick={(e)=>{setPortionNumber(portionNumber - 1)}}>PREV</Button>}
-//         {pages
-//             .filter(p=> p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-//             .map(p => {
-//             return <span className={props.currentPage === p ? styles.selectedPage : styles.pageNumber}
-//                          onClick={(e) => {
-//                              props.onPageChanged(p)
-//                          }}>{p}</span>
-//         })}
-//         {portionCount > portionNumber &&
-//         <Button onClick={(e)=>{setPortionNumber(portionNumber + 1)}}>NEXT</Button>}
-//     </div>
-// }
-//
-//
-//
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//         '& > *': {
-//             marginTop: theme.spacing(2),
-//         },
-//     },
-// }));
-//
-// export const PaginationOutlined = (props) => {
-//     const classes = useStyles();
-//
-//     let totalPage = props.totalPageCount
-//
-//     const [page, setPage] = React.useState(1);
-//     const handleChange = (event, value) => {
-//         setPage(value)
-//         props.onPageChanged(value)
-//     };
-//
-//     return (
-//         <div className={classes.root}>
-//             <Pagination page={page} onChange={handleChange} color="primary"
-//                         count={totalPage} defaultPage={6} boundaryCount={1} siblingCount={1} />
-//         </div>
-//     );
-// }
-
-
 import React, {useState} from "react";
-import styles from './Paginator.module.css';
+import {Pagination} from 'antd';
 
-const Paginator = (props) => {
-    let portionSize = 10
-    let pagesCount = Math.ceil(props.totalPageCount / props.pageSize)
-    let pages = []
-    for (let i = 1; i <= pagesCount; i++) {
-        if (i <= pagesCount) {
-            pages.push(i)
-        }
-    }
+const Paginator = ({totalPageCount, pageSize, currentPage, onPageChanged}) => {
+    const [page, setPage] = useState(currentPage);
+    const [size, setSize] = useState(pageSize);
 
-    let portionCount = Math.ceil(pagesCount/portionSize)
-    let [portionNumber, setPortionNumber] = useState(1)
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
-    let rightPortionPageNumber = portionNumber * portionSize
+    const handleChange = (page, size) => {
+        setPage(page)
+        setSize(size)
+        onPageChanged(page, size)
+    };
 
-    return <div className={styles.paginator}>
-        {portionNumber > 1 &&
-        <button onClick={(e)=>{setPortionNumber(portionNumber - 1)}}>PREV</button>}
-        {pages
-            .filter(p=> p >= leftPortionPageNumber && p <= rightPortionPageNumber)
-            .map((p, index) => {
-                return <span key={index} className={props.currentPage === p ? styles.selectedPage : styles.pageNumber}
-                             onClick={(e) => {
-                                 props.onPageChanged(p)
-                             }}>{p}</span>
-            })}
-        {portionCount > portionNumber &&
-        <button onClick={(e)=>{setPortionNumber(portionNumber + 1)}}>NEXT</button>}
-    </div>
+    return (
+        <div>
+            <Pagination
+                onChange={(page, size) => {
+                    handleChange(page, size)
+                }}
+                pageSize={size}
+                current={page}
+                defaultCurrent={6} total={totalPageCount}/>
+        </div>
+    );
 }
 
-export default Paginator
+export default Paginator;
 
 
