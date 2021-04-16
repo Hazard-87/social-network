@@ -1,7 +1,7 @@
 import React from "react";
-import profileReducer from "./profileReducer";
-import dialogsReducer from "./dialogsReducer";
-import sidebarReducer from "./sidebarReducer";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
     _state : {
@@ -79,38 +79,7 @@ let store = {
     getRerender () {
         return this._Rerender
     },
-    // addPost () {
-    //     let createPost = {
-    //         id: 4,
-    //         post: this._state.profilePage.newPostText,
-    //         likesCount: 0
-    //     }
-    //     if (this._state.profilePage.newPostText != '') {
-    //         this._state.profilePage.posts.unshift(createPost)
-    //     }
-    //     this._state.profilePage.newPostText = ''
-    //     this._Rerender(this._state)
-    // },
-    // addMessage () {
-    //     let createMessage = {
-    //         id: 8,
-    //         message: this._state.messagesPage.createMessage,
-    //         ava: 'https://gg-pro.ru/files/avatars/1564818111.jpg'
-    //     }
-    //     if (this._state.messagesPage.createMessage != '') {
-    //         this._state.messagesPage.messages.push(createMessage)
-    //     }
-    //     this._state.messagesPage.createMessage = ''
-    //     this._Rerender(this._state)
-    // },
-    // onPostChange (createText) {
-    //     this._state.profilePage.newPostText = createText
-    //     this._Rerender(this._state)
-    // },
-    // onCreateMessage (createMessage) {
-    //     this._state.messagesPage.createMessage = createMessage
-    //     this._Rerender(this._state)
-    // },
+
     subscribe (observer) {
         this._Rerender = observer
     },
@@ -122,8 +91,3 @@ let store = {
         this._Rerender(this._state)
     }
 }
-
-
-
-// export default store;
-// window.store = store;

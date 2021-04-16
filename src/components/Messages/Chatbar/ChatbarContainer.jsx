@@ -1,5 +1,5 @@
 import React from 'react';
-import {addMessageCreateAction} from "../../../redux/dialogsReducer";
+import {addMessageCreateAction} from "../../../redux/dialogs-reducer";
 import Chatbar from "./Chatbar";
 import {connect} from "react-redux";
 

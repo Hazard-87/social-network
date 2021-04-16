@@ -8,7 +8,7 @@ import {
     setEditMode,
     setUserProfile,
     updateStatus
-} from "../../redux/profileReducer";
+} from "../../redux/profile-reducer";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";

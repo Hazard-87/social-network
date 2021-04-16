@@ -1,4 +1,16 @@
-const ADD_MESSAGE = 'ADD-MESSAGE'
+const SEND_MESSAGE = 'SEND_MESSAGE'
+
+type DialogType = {
+    id: number
+    name: string
+    ava: string
+}
+
+type MessageType = {
+    id: number
+    message: string
+    ava: string
+}
 
 let initialState = {
     dialogs: [
@@ -25,7 +37,7 @@ let initialState = {
         },
         { id: 7, name: 'Max', ava: 'https://1message.ru/wp-content/uploads/2017/03/ustanovka-avatarki7.jpg' },
         { id: 8, name: 'Brat', ava: 'https://download-cs.net/steam/avatars/3412.jpg' }
-    ],
+    ] as Array<DialogType>,
     messages: [
         { id: 1, message: 'На Avatarko.ru', ava: 'https://gg-pro.ru/files/avatars/1564818111.jpg' },
         { id: 2, message: 'Паблик в котором💜', ava: 'https://gg-pro.ru/files/avatars/1564818111.jpg' },
@@ -33,12 +45,14 @@ let initialState = {
         { id: 4, message: 'I\'m norm', ava: 'https://gg-pro.ru/files/avatars/1564818111.jpg' },
         { id: 5, message: 'I\'m learn a react', ava: 'https://gg-pro.ru/files/avatars/1564818111.jpg' },
         { id: 6, message: 'Perfect', ava: 'https://gg-pro.ru/files/avatars/1564818111.jpg' }
-    ],
+    ] as Array<MessageType>,
 }
 
-const dialogsReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const dialogsReducer = (state = initialState, action: SendMessageCreatorActionType): InitialStateType => {
     switch (action.type) {
-        case ADD_MESSAGE:
+        case SEND_MESSAGE:
             return {
                 ...state,
                 messages: [...state.messages, {
@@ -50,6 +64,11 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageCreateAction = (newMessageBody) => ({ type: 'ADD-MESSAGE', newMessageBody })
+type SendMessageCreatorActionType = {
+    type: typeof SEND_MESSAGE
+    newMessageBody: string
+}
+
+export const addMessageCreateAction = (newMessageBody: string): SendMessageCreatorActionType => ({ type: 'SEND_MESSAGE', newMessageBody })
 
 export default dialogsReducer;

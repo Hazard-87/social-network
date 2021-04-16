@@ -14,10 +14,9 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Login from './components/Login/Login';
 
-import {Layout, Menu, Breadcrumb, Image, Avatar} from 'antd';
+import {Layout, Menu, Breadcrumb} from 'antd';
 import {
     LoginOutlined,
-    WechatOutlined,
     SettingOutlined,
     UserOutlined,
     ReadOutlined,
@@ -25,10 +24,10 @@ import {
     MessageOutlined,
     TeamOutlined,
     CustomerServiceOutlined,
-    LogoutOutlined
+    LogoutOutlined,
 } from '@ant-design/icons';
 import {logout} from './redux/auth-reducer';
-import {setEditMode} from './redux/profileReducer';
+import {setEditMode} from './redux/profile-reducer';
 
 const MessagesContainer = React.lazy(() => import('./components/Messages/MessagesContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -70,17 +69,7 @@ class App extends React.Component {
                                     <Link to={'/login'}>Sign In</Link>
                                 </Menu.Item>
                             ) : (
-                                <SubMenu
-                                    key="sub1"
-                                    // icon={
-                                    //     <Avatar
-                                    //         src={
-                                    //             <Image
-                                    //                 src={this.props.profile.photos && this.props.profile.photos.large}/>
-                                    //         }
-                                    //     />
-                                    // }
-                                    title={this.props.login}>
+                                <SubMenu key="sub1" title={this.props.login}>
                                     <Menu.Item key="1" icon={<UserOutlined/>}>
                                         <Link to={`/profile`}>My profile</Link>
                                     </Menu.Item>

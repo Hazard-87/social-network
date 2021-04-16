@@ -4,12 +4,9 @@ import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from '../../../assets/images/user.png';
 import ProfileDataForm from "./ProfileDataForm";
-import {setEditMode} from "../../../redux/profileReducer";
 import UploadFile from "../../common/upload/Upload";
 
 const MyProfile = (props) => {
-
-
     if (!props.profile.photos) {
         return <Preloader/>
     }
@@ -25,15 +22,11 @@ const MyProfile = (props) => {
         })
     }
 
-
-
     return (
         <div className={classes.content}>
             <div className={classes.avatar}>
                 <img src={!props.profile.photos.large ? userPhoto : props.profile.photos.large}/>
-                {props.isOwner &&
-
-                    <UploadFile onSelectedPhoto={onSelectedPhoto}/>
+                {props.isOwner && <UploadFile onSelectedPhoto={onSelectedPhoto}/>
                 // <div className={classes.root}>
                 //     <input accept="image/*" className={classes.input}
                 //            type="file" onChange={onSelectedPhoto}/>

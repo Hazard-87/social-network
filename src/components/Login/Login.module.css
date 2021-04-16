@@ -1,9 +1,10 @@
 .wrap {
     width: 300px;
-    background-color: #000118;
     margin-left: 290px;
     padding: 20px 50px;
 }
-h2{
-    color: #fff;
+input{
+    margin-bottom: 10px;
+    border: 1px solid #b1b1b1;
+    border-radius: 3px;
 }

@@ -1,4 +1,11 @@
-let initialState = {friends: [
+type FriendsType = {
+    id: number
+    name: string
+    ava: string
+}
+
+let initialState = {
+    friends: [
         {
             id: 1,
             name: 'Polina',
@@ -14,9 +21,12 @@ let initialState = {friends: [
             name: 'Evelina',
             ava: 'http://www.youloveit.ru/uploads/posts/2018-03/1520168814_youloveit_ru_ariana_grande_emoji_avatarki09.jpg'
         }
-    ]}
+    ] as Array<FriendsType>
+}
 
-const sidebarReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState
+
+const sidebarReducer = (state = initialState, action: FriendsType): InitialStateType => {
     return state;
 }
 

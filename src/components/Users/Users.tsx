@@ -7,27 +7,54 @@ import {Avatar, Button} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
 
 import {Card} from 'antd';
+import {UsersType} from "../../types/types";
 
 const {Meta} = Card;
 
-let Users = (props) => {
-    let p = props.currentPage + 1
+type PropsType = {
+    totalPageCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number, pageSize: number)=> void
+    isFetching: boolean
+    followingInProgress: Array<number>
+    unfollow: (userId: number)=> void
+    follow: (userId: number)=> void
+    users: Array<UsersType>
+    onMorePage: (page: number) => void
+}
+
+let Users: React.FC<PropsType> = (
+    {
+        totalPageCount,
+        pageSize,
+        currentPage,
+        onPageChanged,
+        isFetching,
+        followingInProgress,
+        unfollow,
+        follow,
+        users,
+        onMorePage
+    }
+) => {
+    let p = currentPage + 1
 
     return <div>
-        <Paginator totalPageCount={props.totalPageCount} pageSize={props.pageSize}
-                   currentPage={props.currentPage} onPageChanged={props.onPageChanged}/>
-        {props.isFetching && <div className={classes.preloader}><Preloader/></div>}
+        <Paginator totalPageCount={totalPageCount} pageSize={pageSize}
+                   currentPage={currentPage} onPageChanged={onPageChanged}/>
+        {isFetching && <div className={classes.preloader}><Preloader/></div>}
         <div className={classes.container}>
-            {props.users.map(user =>
+            {users.map(user =>
                     <div key={user.id}>
-            <span className={props.isFetching ? classes.hide : classes.user}>
+            <span className={isFetching ? classes.hide : classes.user}>
                 <div>
                 {user.followed
-                    ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                        props.unfollow(user.id)
+                    ? <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
+                        unfollow(user.id)
                     }} className={classes.unfollow}>unfollow</button>
-                    : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                        props.follow(user.id)
+                    : <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
+                        follow(user.id)
                     }} className={classes.follow}>follow</button>
                 }
                 </div>
@@ -42,12 +69,12 @@ let Users = (props) => {
                     </Card>
                 </NavLink>
                 </span>
-            </div>
+                    </div>
             )
             }
         </div>
         <Button className={classes.more} onClick={(e) => {
-            props.onMorePage(p)
+            onMorePage(p)
         }}>Show more
         </Button>
     </div>

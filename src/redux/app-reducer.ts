@@ -10,7 +10,7 @@ let initialState: InitialStateType = {
     initialized: false
 }
 
-const appReducer = (state = initialState, action: any): InitialStateType => {
+const appReducer = (state = initialState, action: InitializedSuccessActionType): InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS: {
             return {
@@ -28,6 +28,7 @@ type InitializedSuccessActionType = {
 }
 
 export const initializedSuccess = (): InitializedSuccessActionType => ({type: 'INITIALIZED_SUCCESS'})
+
 
 export const initializeApp = () => (dispatch: any) => {
     Promise.all([dispatch(getAuthUserData())]).then(() => {
